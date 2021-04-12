@@ -1,6 +1,6 @@
 #### rna_seq_container
 
-- current software versions:  
+##### current software versions:  
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
 (`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
 ```
@@ -14,10 +14,10 @@ R version 4.0.3 with libpath "/opt/conda/envs/conda_rna_seq/lib/R/library"
 Python 3.9.2 (/opt/conda/envs/conda_rna_seq/bin/python)
 ```
 
-- Dockerhub auto-build:  
-    see https://hub.docker.com/repository/docker/wtsihgi/rna_seq
+##### Dockerhub auto-build:  
+see https://hub.docker.com/repository/docker/wtsihgi/rna_seq
 
-- Docker manual build:
+##### Docker manual build:
 
 ```
 docker build . # or docker build --tag wtsihgi/rna_seq:1.0 .
@@ -36,7 +36,7 @@ docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt
 docker run wtsihgi/rna_seq:1.0 printenv
 ```
 
-- Convert docker image to singularity:
+##### Convert docker image to singularity:
 
 ```
 ## option 1 (pull first):
