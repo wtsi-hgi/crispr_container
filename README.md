@@ -3,6 +3,8 @@
 ##### current software versions:  
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
 (`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
+
+For docker tag **1.0**:
 ```
 featureCounts v2.0.2
 salmon 1.4.0
