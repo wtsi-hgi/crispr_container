@@ -19,8 +19,11 @@ Python 3.9.2 (/opt/conda/envs/conda_rna_seq/bin/python)
 - Docker manual build:
 
 ```
-docker build --tag rna_seq:1.0 .
-(or docker build ., then docker image ls, then docker image tag e682162f5052 rna_seq:1.0)
+docker build . # or docker build --tag wtsihgi/rna_seq:1.0 .
+docker image ls
+docker image tag e682162f5052 wtsihgi/rna_seq:1.0
+docker login
+docker image push wtsihgi/rna_seq:1.0
 
 # check that conda env is loaded on 'run":
 docker run rna_seq:1.0 conda env list
