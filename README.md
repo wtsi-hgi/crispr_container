@@ -1,7 +1,8 @@
 #### rna_seq_container
 
-- current software versions:
+- current software versions:  
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt` :
+(`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
 ```
 featureCounts v2.0.2
 salmon 1.4.0
@@ -26,10 +27,13 @@ docker login
 docker image push wtsihgi/rna_seq:1.0
 
 # check that conda env is loaded on 'run":
-docker run rna_seq:1.0 conda env list
+docker run wtsihgi/rna_seq:1.0 conda env list
+
+# check that conda env is loaded on 'run":
+docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt
 
 # check that path has conda env bin dir first:
-docker run rna_seq:1.0 printenv
+docker run wtsihgi/rna_seq:1.0 printenv
 ```
 
 - Convert docker image to singularity:
