@@ -43,6 +43,7 @@ docker run wtsihgi/rna_seq:1.0 printenv
 ```
 ## option 1 (pull first):
 singularity pull docker://wtsihgi/rna_seq:1.0
+
 # check conda env is loaded by default (requires --containall):
 singularity exec --containall rna_seq_1.0.sif conda env list
 
@@ -54,5 +55,5 @@ export IMAGE=wtsihgi/rna_seq:1.0
 mkdir -p ~/singu &&  rm -rf singu/*.sif
 docker run -v /var/run/docker.sock:/var/run/docker.sock -v ~/singu:/output --privileged -t --rm quay.io/singularity/docker2singularity $IMAGE
 # check image:
-singularity shell --containall singu/wtsihgi_rna_seq-*.sif  conda env list
+singularity shell --containall singu/wtsihgi_rna_seq_1.0.sif  conda env list
 ```
