@@ -43,6 +43,7 @@ docker run wtsihgi/rna_seq:1.0 printenv
 ```
 ## option 1 (pull first):
 singularity pull docker://wtsihgi/rna_seq:1.0
+# this creates image file rna_seq_1.0.sif in current dir.
 
 # check conda env is loaded by default (requires --containall):
 singularity exec --containall rna_seq_1.0.sif conda env list
