@@ -1,38 +1,51 @@
-#### scrna_deconvolution_container
+#### rna_seq_container
+
+- current software versions:
+the versions are saved during docker build in container file `/usr/conda_software_versions.txt` :
+```
+featureCounts v2.0.2
+salmon 1.4.0
+STAR 2.7.8a
+multiqc, version 1.10.1
+QTLtools_1.2_Ubuntu16.04_x86_64
+R /opt/conda/envs/conda_rna_seq/bin/R
+R version 4.0.3 with libpath "/opt/conda/envs/conda_rna_seq/lib/R/library"
+Python 3.9.2 (/opt/conda/envs/conda_rna_seq/bin/python)
+```
 
 - Dockerhub auto-build:  
-    see https://hub.docker.com/repository/docker/mercury/scrna_deconvolution
+    see https://hub.docker.com/repository/docker/wtsihgi/rna_seq
 
 - Docker manual build:
 
 ```
-docker build --tag scrna_deconvolution_container:1.0 .
+docker build --tag rna_seq_container:1.0 .
 
 # check that conda env is loaded on 'run":
-docker run scrna_deconvolution_container:1.0 conda env list
+docker run rna_seq_container:1.0 conda env list
 
 # check that path has conda env bin dir first:
-docker run scrna_deconvolution_container:1.0 printenv
+docker run rna_seq_container:1.0 printenv
 ```
 
 - Convert docker image to singularity:
 
 ```
-singularity pull docker://mercury/scrna_deconvolution
+singularity pull docker://wtsihgi/rna_seq
 
 ## option 1 (pull first):
-singularity pull docker://mercury/scrna_deconvolution:latest 
+singularity pull docker://wtsihgi/rna_seq:latest 
 # check conda env is loaded by default (requires --containall):
-singularity exec --containall scrna_deconvolution_latest.sif conda env list
+singularity exec --containall rna_seq_latest.sif conda env list
 
 ## option 2 (single command, exec directly from Dockerhub):
-singularity exec --containall docker://mercury/scrna_deconvolution:latest conda env list
+singularity exec --containall docker://wtsihgi/rna_seq:latest conda env list
 
 ## option 3 (user Docker to create singularity image):
-export IMAGE=mercury/scrna_deconvolution:latest
+export IMAGE=wtsihgi/rna_seq:latest
 mkdir -p ~/singu &&  rm -rf singu/*.sif
 docker run -v /var/run/docker.sock:/var/run/docker.sock -v ~/singu:/output --privileged -t --rm quay.io/singularity/docker2singularity $IMAGE
 # check image:
-singularity shell --containall singu/mercury_scrna_deconvolution-*.sif  conda env list
+singularity shell --containall singu/wtsihgi_rna_seq-*.sif  conda env list
 ```
 
