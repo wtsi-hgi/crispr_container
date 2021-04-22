@@ -4,9 +4,10 @@
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
 (`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
 
-docker tag **1.1** adds fastqc on top on v1.0 software:
+docker tag **1.1** adds fastqc and updates Python:
 ```
 FastQC v0.11.9
+Python 3.9.4
 ```
 
 For docker tag **1.0**:
