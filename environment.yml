@@ -21,3 +21,4 @@ dependencies:
   - regtools
   - pandas
   - click
+  - fastqc
