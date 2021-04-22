@@ -2,7 +2,7 @@
 
 ##### current software versions:  
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
-(`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
+(`docker run wtsihgi/rna_seq:1.1 cat /usr/conda_software_versions.txt`)
 
 docker tag **1.1** adds fastqc and updates Python:
 ```
@@ -28,39 +28,39 @@ see https://hub.docker.com/repository/docker/wtsihgi/rna_seq
 ##### Docker manual build:
 
 ```
-docker build . # or docker build --tag wtsihgi/rna_seq:1.0 .
+docker build . # or docker build --tag wtsihgi/rna_seq:1.1 .
 docker image ls
-docker image tag e682162f5052 wtsihgi/rna_seq:1.0
+docker image tag e682162f5052 wtsihgi/rna_seq:1.1
 docker login
-docker image push wtsihgi/rna_seq:1.0
+docker image push wtsihgi/rna_seq:1.1
 
 # check that conda env is loaded on 'run":
-docker run wtsihgi/rna_seq:1.0 conda env list
+docker run wtsihgi/rna_seq:1.1 conda env list
 
 # check software versions:
-docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt
+docker run wtsihgi/rna_seq:1.1 cat /usr/conda_software_versions.txt
 
 # check that path has conda env bin dir first:
-docker run wtsihgi/rna_seq:1.0 printenv
+docker run wtsihgi/rna_seq:1.1 printenv
 ```
 
 ##### Convert docker image to singularity:
 
 ```
 ## option 1 (pull first):
-singularity pull docker://wtsihgi/rna_seq:1.0
-# this creates image file rna_seq_1.0.sif in current dir.
+singularity pull docker://wtsihgi/rna_seq:1.1
+# this creates image file rna_seq_1.1.sif in current dir.
 
 # check conda env is loaded by default (requires --containall):
-singularity exec --containall rna_seq_1.0.sif conda env list
+singularity exec --containall rna_seq_1.1.sif conda env list
 
 ## option 2 (single command, exec directly from Dockerhub):
-singularity exec --containall docker://wtsihgi/rna_seq:1.0 conda env list
+singularity exec --containall docker://wtsihgi/rna_seq:1.1 conda env list
 
 ## option 3 (user Docker to create singularity image):
-export IMAGE=wtsihgi/rna_seq:1.0
+export IMAGE=wtsihgi/rna_seq:1.1
 mkdir -p ~/singu &&  rm -rf singu/*.sif
 docker run -v /var/run/docker.sock:/var/run/docker.sock -v ~/singu:/output --privileged -t --rm quay.io/singularity/docker2singularity $IMAGE
 # check image:
-singularity shell --containall singu/wtsihgi_rna_seq_1.0.sif  conda env list
+singularity shell --containall singu/wtsihgi_rna_seq_1.1.sif  conda env list
 ```
