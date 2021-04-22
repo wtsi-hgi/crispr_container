@@ -4,6 +4,11 @@
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
 (`docker run wtsihgi/rna_seq:1.0 cat /usr/conda_software_versions.txt`)
 
+docker tag **1.1** adds fastqc on top on v1.0 software:
+```
+FastQC v0.11.9
+```
+
 For docker tag **1.0**:
 ```
 featureCounts v2.0.2
