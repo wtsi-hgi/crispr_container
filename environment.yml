@@ -9,6 +9,7 @@ dependencies:
   - r-base>=4
   - bioconductor-tximport 
   - bioconductor-annotationhub
+  - bioconductor-ensembldb
   - r-magrittr 
   - r-readr 
   - star
