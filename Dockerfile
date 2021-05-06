@@ -66,13 +66,14 @@ RUN echo $PATH
 RUN ls -ltra /opt/conda/envs/$conda_env/bin
 
 # test R libraries can  be loaded:
-RUN Rscript -e "sessionInfo();.libPaths();library(AnnotationHub);library(tximport);library(magrittr);library(readr)"
+RUN Rscript -e "sessionInfo();.libPaths();library(AnnotationHub);library(ensembldb);library(tximport);library(magrittr);library(readr)"
 
 # test python libraries can be loaded:
 RUN python -c 'import sys;print(sys.version_info)'
 
 ## check software versions:
 RUN featureCounts -v >> /usr/conda_software_versions.txt 2>&1
+RUN fastqc -version >> /usr/conda_software_versions.txt
 RUN salmon --version >> /usr/conda_software_versions.txt
 RUN echo STAR >> /usr/conda_software_versions.txt && STAR --version >> /usr/conda_software_versions.txt
 RUN multiqc --version >> /usr/conda_software_versions.txt
