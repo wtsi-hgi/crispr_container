@@ -5,6 +5,11 @@ channels:
   - bioconda
   - anaconda
 dependencies:
+  - scipy
+  - numpy
+  - matplotlib
+  - bowtie
+  - mageck
   - python>=3.4
   - r-base>=4
   - bioconductor-tximport 
@@ -12,9 +17,7 @@ dependencies:
   - bioconductor-ensembldb
   - r-magrittr 
   - r-readr 
-  - star
   - subread
-  - salmon
   - multiqc
   - tabix
   - bcftools
