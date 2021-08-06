@@ -1,4 +1,4 @@
-#### rna_seq_container
+#### crispr container
 
 ##### current software versions:  
 the versions are saved during docker build in container file `/usr/conda_software_versions.txt`:  
