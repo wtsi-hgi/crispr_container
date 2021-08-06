@@ -1,4 +1,4 @@
-name: conda_rna_seq
+name: crispr
 channels:
   - defaults
   - conda-forge
