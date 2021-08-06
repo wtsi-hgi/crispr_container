@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 # the folllowing ARG conda_env variable must match the conda env name defined in environment.yml:
-ARG conda_env=conda_rna_seq
+ARG conda_env=conda_crispr
 
 LABEL authors="Guillaume Noell" \
   maintainer="Guillaume Noell <gn5@sanger.ak>" \
