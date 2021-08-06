@@ -35,35 +35,12 @@ ENV CONDA_DEFAULT_ENV $conda_env
 ENV PATH /opt/conda/envs/$conda_env/bin:$PATH
 RUN echo $PATH
 
-## Add additional software using pip from Conda env:
-## RUN /bin/bash -c "source activate $conda_env \
-##    && pip install cellSNP \
-##    && pip install vireoSNP \
-##    && conda env list"
-
-## Add software that is not available via conda:
-
-## featureCounts binary:
-RUN wget https://sourceforge.net/projects/subread/files/subread-2.0.2/subread-2.0.2-Linux-x86_64.tar.gz \
-  && tar -zxvf subread-2.0.2-Linux-x86_64.tar.gz \
-  && cp -r subread-2.0.2-Linux-x86_64/bin/* /opt/conda/envs/$conda_env/bin/
-  
-
-## QTLtools MBV:
-RUN wget https://qtltools.github.io/qtltools/binaries/QTLtools_1.2_Ubuntu16.04_x86_64.tar.gz \ 
-    && tar -zxvf QTLtools_1.2_Ubuntu16.04_x86_64.tar.gz \
-    && chmod a+x QTLtools_1.2_Ubuntu16.04_x86_64/QTLtools_1.2_Ubuntu16.04_x86_64 \
-    && mv QTLtools_1.2_Ubuntu16.04_x86_64/* /opt/conda/envs/$conda_env/bin/ \
-    && ln -s /opt/conda/envs/$conda_env/bin/QTLtools_1.2_Ubuntu16.04_x86_64 /opt/conda/envs/$conda_env/bin/QTLtools
-
-## leafcutter regtools:
-## cf. http://davidaknowles.github.io/leafcutter/articles/Installation.html
-RUN git clone https://github.com/davidaknowles/leafcutter /opt/conda/envs/$conda_env/bin/leafcutter
-ENV PATH /opt/conda/envs/$conda_env/bin:/opt/conda/envs/$conda_env/bin/leafcutter/scripts:/opt/conda/envs/$conda_env/bin/leafcutter/clustering:$PATH
-RUN echo $PATH
-
 # check bin  folder:
 RUN ls -ltra /opt/conda/envs/$conda_env/bin
+
+# add R libraries
+COPY install_R_libs.R .
+RUN Rscript install_R_libs.R
 
 # test R libraries can  be loaded:
 RUN Rscript -e "sessionInfo();.libPaths();library(AnnotationHub);library(ensembldb);library(tximport);library(magrittr);library(readr)"
