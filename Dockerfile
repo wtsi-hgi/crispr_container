@@ -4,7 +4,7 @@ ARG conda_env=conda_rna_seq
 
 LABEL authors="Guillaume Noell" \
   maintainer="Guillaume Noell <gn5@sanger.ak>" \
-  description="Docker image for WSTI-HGI RNA-Seq Nextflow pipeline"
+  description="Docker image for Crispr Nextflow pipeline"
 
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
