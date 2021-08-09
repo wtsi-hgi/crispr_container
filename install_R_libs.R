@@ -1,7 +1,7 @@
 # libs to install 
 
 # install non-bioconductor packages:
-to_install = c("sgRSEA","sm","MESS","kinship2")
+to_install = c("sm","MESS","kinship2")
 install.packages(to_install, repos = "http://cran.us.r-project.org")
 
 # devtools github install:
