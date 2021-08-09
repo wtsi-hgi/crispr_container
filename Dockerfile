@@ -32,6 +32,15 @@ ENV PATH "$PATH:$MAMBA_ROOT_PREFIX/JACKS/jacks"
 
 RUN python -c 'import sys; import jacks; print(sys.version_info)'
 
+## check software versions:
+RUN fastqc -version >> /usr/conda_software_versions.txt
+RUN multiqc --version >> /usr/conda_software_versions.txt
+# now picking R and python from conda env by default:
+RUN which R >> /usr/conda_software_versions.txt && R --version >> /usr/conda_software_versions.txt
+RUN Rscript -e ".libPaths()" >> /usr/conda_software_versions.txt
+RUN which python >> /usr/conda_software_versions.txt && python --version >> /usr/conda_software_versions.txt
+RUN cat /usr/conda_software_versions.txt
+
 USER micromamba
 WORKDIR /tmp
 ENTRYPOINT ["/bin/entrypoint.sh"]
