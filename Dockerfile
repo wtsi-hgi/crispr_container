@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 # the folllowing ARG conda_env variable must match the conda env name defined in environment.yml:
-ARG conda_env=conda_crispr
+ARG conda_env=crispr
 
 LABEL authors="Guillaume Noell" \
   maintainer="Guillaume Noell <gn5@sanger.ak>" \
@@ -47,17 +47,5 @@ RUN Rscript -e "sessionInfo();.libPaths();library(AnnotationHub);library(ensembl
 
 # test python libraries can be loaded:
 RUN python -c 'import sys;print(sys.version_info)'
-
-## check software versions:
-RUN featureCounts -v >> /usr/conda_software_versions.txt 2>&1
-RUN fastqc -version >> /usr/conda_software_versions.txt
-RUN salmon --version >> /usr/conda_software_versions.txt
-RUN echo STAR >> /usr/conda_software_versions.txt && STAR --version >> /usr/conda_software_versions.txt
-RUN multiqc --version >> /usr/conda_software_versions.txt
-# now picking R and python from conda env by default:
-RUN which R >> /usr/conda_software_versions.txt && R --version >> /usr/conda_software_versions.txt
-RUN Rscript -e ".libPaths()" >> /usr/conda_software_versions.txt
-RUN which python >> /usr/conda_software_versions.txt && python --version >> /usr/conda_software_versions.txt
-RUN cat /usr/conda_software_versions.txt
 
 CMD /bin/sh
