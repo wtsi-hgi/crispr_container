@@ -1,19 +1,27 @@
 # libs to install 
-to_install = c(
+
+# install non-bioconductor packages:
+to_install = c("sgRSEA","quadprog","sm","MESS","kinship2")
+install.packages(to_install)
+
+# devtools github install:
+install.packages("devtools")
+library(devtools)
+install_github("francescojm/CRISPRcleanR")
+install_github("jyyu/ScreenBEAM")
+
+# install bioconductor packages:
+to_install_bioconductor = c(
 "ShortRead",
 "seqinr",
-"sgRSEA",
 "BiocGenerics",
 "biomaRt",
-"MESS",
 "DESeq2",
 "reshape2",
 "DEoptim",
 "tidyverse",
 "caTools",
 "BiocParallel",
-"ScreenBEAM",
-"sm",
 "dplyr",
 "ggplot2",
 "reshape2",
@@ -23,11 +31,10 @@ to_install = c(
 "stringr",
 "glue",
 "CB2",
-"Rqc",
-"CRISPRcleanR")
+"Rqc")
 
 # Install BiocManager if not done already:
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager", repos='http://cran.us.r-project.org')
 
-BiocManager::install(to_install)
+BiocManager::install(to_install_bioconductor)
