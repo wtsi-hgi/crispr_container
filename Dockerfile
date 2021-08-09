@@ -7,11 +7,11 @@ RUN rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 RUN apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y --no-install-recommends \
-  r-base \
+  r-base r-cran-mvtnorm r-cran-multcomp r-cran-mgcv \
   procps \
   python2.7 \
   build-essential curl git python-pip procps \ 
-  g++ gcc gfortran make autoconf automake libtool \
+  manpages-dev g++ gcc gfortran make autoconf automake libtool \
   zlib1g-dev liblzma-dev libbz2-dev lbzip2 libgsl-dev \
   libblas-dev libx11-dev \
   libreadline-dev libxt-dev libpcre2-dev libcurl4-openssl-dev \
