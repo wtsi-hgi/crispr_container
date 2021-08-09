@@ -28,7 +28,7 @@ ENV MAMBA_ROOT_PREFIX="/opt/conda"
 WORKDIR "$MAMBA_ROOT_PREFIX"
 RUN git clone https://github.com/felicityallen/JACKS
 RUN cd JACKS/jacks && pip install .
-EXPORT PATH=$PATH:$MAMBA_ROOT_PREFIX/JACKS/jacks
+ENV PATH "$PATH:$MAMBA_ROOT_PREFIX/JACKS/jacks"
 
 RUN python -c 'import sys; import jacks; print(sys.version_info)'
 
