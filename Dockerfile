@@ -51,8 +51,7 @@ RUN echo "mageck version:" >> /opt/conda/conda_software_versions.txt && mageck -
 RUN samtools --version >> /opt/conda/conda_software_versions.txt
 RUN cat /opt/conda/conda_software_versions.txt
 
-
-#USER micromamba
-#WORKDIR /tmp
-#ENTRYPOINT ["/bin/entrypoint.sh"]
-#CMD ["/bin/bash"]
+USER micromamba
+WORKDIR /tmp
+ENTRYPOINT ["/bin/entrypoint.sh"]
+CMD ["/bin/bash"]
