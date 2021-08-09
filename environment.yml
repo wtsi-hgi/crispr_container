@@ -18,11 +18,12 @@ dependencies:
   - r-magrittr 
   - r-readr 
   - subread
-  - multiqc
   - tabix
   - bcftools
   - samtools
   - regtools
   - pandas
   - click
+  - fastx_toolkit
   - fastqc
+  - multiqc
