@@ -1,6 +1,5 @@
 library("ShortRead")
 library("seqinr")
-library("sgRSEA")
 library("BiocGenerics")
 library("biomaRt")
 library("MESS")
