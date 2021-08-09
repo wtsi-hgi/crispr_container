@@ -37,6 +37,7 @@ COPY install_R_libs.R .
 RUN Rscript install_R_libs.R
 # check R libraries can be loaded:
 COPY check_library_loads.R .
+RUN Rscript check_library_loads.R
 RUN Rscript -e "sessionInfo()" >> /opt/conda/r_session_info.txt
 
 # check software versions:
