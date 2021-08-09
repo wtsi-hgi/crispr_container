@@ -5,7 +5,7 @@ to_install = c("sm","MESS","kinship2")
 install.packages(to_install, repos = "http://cran.us.r-project.org")
 
 # devtools github install:
-install.packages("devtools")
+install.packages("devtools", repos = "http://cran.us.r-project.org")
 library(devtools)
 install_github("francescojm/CRISPRcleanR")
 install_github("jyyu/ScreenBEAM")
