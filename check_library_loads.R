@@ -23,4 +23,4 @@ library("glue")
 library("CB2")
 library("Rqc")
 library("CRISPRcleanR")
-
+sessionInfo()
